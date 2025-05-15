@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Página de Login</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  .login-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3rem 2.5rem;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1.2px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.2rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  .btn-login {
+    background: #fff;
+    color: #764ba2;
+    font-weight: 700;
+    border: none;
+    padding: 0.85rem 0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .btn-login:hover {
+    background-color: #5a3d85;
+    color: #fff;
+  }
+
+  .error-message {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <div id="error" class="error-message">Por favor, preencha todos os campos.</div>
+    <form id="loginForm" novalidate>
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" placeholder="Digite seu usuário" autocomplete="username" />
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" autocomplete="current-password" />
+      <button type="submit" class="btn-login">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorElem = document.getElementById('error');
+
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      errorElem.style.display = 'none';
+
+      const username = loginForm.username.value.trim();
+      const password = loginForm.password.value.trim();
+
+      if (!username || !password) {
+        errorElem.textContent = 'Por favor, preencha todos os campos.';
+        errorElem.style.display = 'block';
+        return;
+      }
+
+      // Simulate login success for demo
+      alert('Login realizado com sucesso! Bem-vindo, ' + username + '.');
+
+      loginForm.reset();
+    });
+  </script>
+</body>
+</html>
+
